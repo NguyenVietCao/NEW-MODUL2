@@ -28,7 +28,7 @@ public class Cylinder extends Circle {
     Cylinder cylinder = new Cylinder(2,"red",4);
 
     @Override
-    public String toString() {//overthừa
+    public String toString() {//override Circle
         return "Cylinder{" +
                 "height=" + height +
                 ", which is a subclass of" + super.toString() +

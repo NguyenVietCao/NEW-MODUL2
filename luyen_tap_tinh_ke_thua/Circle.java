@@ -32,7 +32,7 @@ public class Circle {
     }
 
     @Override
-    public String toString() {//override
+    public String toString() {//override object
         return "Circle{" +
                 "radius=" + radius +
                 ", color='" + color + '\'' +
