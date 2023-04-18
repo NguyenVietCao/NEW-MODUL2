@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class FruitController {
     static FruitService fruitService = new FruitService();
     static Scanner scanner = new Scanner(System.in);
-    public static void displayMenu(){
+    public  void displayMenu(){
         fruitManager();
     }
-    public static void fruitManager(){
+    public  void fruitManager(){
         boolean check = true;
         do {
             System.out.println("1. Add new Fruit  \n" +

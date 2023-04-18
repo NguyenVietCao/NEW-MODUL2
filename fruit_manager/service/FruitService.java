@@ -10,8 +10,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class FruitService implements IFruitService {
-    static FruitRepository fruitRepository = new FruitRepository();
-    static Scanner scanner = new Scanner(System.in);
+     FruitRepository fruitRepository = new FruitRepository();
+     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void displayFruitService() {
