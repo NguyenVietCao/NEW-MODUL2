@@ -7,4 +7,6 @@ public interface ISpendingService {
     void deleteSpendingService();
     void searchBySpendingCodeService();
     void searchBySpendingNameService();
+    void sortByNameService();
+    void sortBySpendingService();
 }

@@ -35,7 +35,9 @@ public class SpendingController {
                     "4. Edit Spending \n" +
                     "5. Search by Spending Code \n" +
                     "6. Search by Spending Name \n" +
-                    "7. Return Menu \n" +
+                    "7. Sort by name ascending \n" +
+                    "8. Sort spending in descending order \n" +
+                    "9. Return Menu \n" +
                     "Mời chọn chức năng: ");
             int n = Integer.parseInt(scanner.nextLine());
             switch (n){
@@ -58,6 +60,12 @@ public class SpendingController {
                     spendingService.searchBySpendingNameService();
                     break;
                 case 7:
+                    spendingService.sortByNameService();
+                    break;
+                case 8:
+                    spendingService.sortBySpendingService();
+                    break;
+                case 9:
                     check = false;
                     break;
                 default:

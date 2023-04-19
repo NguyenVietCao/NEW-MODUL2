@@ -69,7 +69,7 @@ public class Spending {
                 ", spendingDate='" + spendingDate + '\'' +
                 ", amountSpent='" + amountSpent + '\'' +
                 ", moreDescription='" + moreDescription + '\'' +
-                '}'+ "\n";
+                '}' + "\n";
     }
 }
 

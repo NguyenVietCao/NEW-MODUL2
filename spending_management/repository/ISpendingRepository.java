@@ -12,4 +12,8 @@ public interface ISpendingRepository {
     void editSpendingRepository(Spending spending);
     void searchBySpendingCodeRepository(String spendingCodeFind);
     List<Spending> searchBySpendingNameRepository(String spendingNameFind);
+
+    List<Spending> sortByNameRepository(String spendingName);
+
+    List<Spending> sortBySpendingRepository(String amountSpent);
 }

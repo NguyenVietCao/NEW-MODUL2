@@ -100,9 +100,9 @@ public class SpendingService implements ISpendingService {
         System.out.println("Enter your Spending Code you need to find");
         String spendingCodeFind = scanner.nextLine();
         Map<String, Spending> spendingMap = spendingRepository.displaySpendingRepository();
-        Set<String>set = spendingMap.keySet();
-        for (String key:set) {
-            if (spendingCodeFind.equals(spendingMap.get(key).getSpendingCode())){
+        Set<String> set = spendingMap.keySet();
+        for (String key : set) {
+            if (spendingCodeFind.equals(spendingMap.get(key).getSpendingCode())) {
                 spendingRepository.searchBySpendingCodeRepository(spendingCodeFind);
             }
         }
@@ -112,8 +112,26 @@ public class SpendingService implements ISpendingService {
     public void searchBySpendingNameService() {
         System.out.println("Enter your Spending Name you need to find: ");
         String spendingNameFind = scanner.nextLine();
-       List<Spending>spendingList =  spendingRepository.searchBySpendingNameRepository(spendingNameFind);
+        List<Spending> spendingList = spendingRepository.searchBySpendingNameRepository(spendingNameFind);
         System.out.println(spendingList);
 
+    }
+
+    @Override
+    public void sortByNameService() {
+        Spending spending = new Spending();
+        List<Spending> spendingList = spendingRepository.sortByNameRepository(spending.getSpendingName());
+        for (Spending s : spendingList) {
+            System.out.println(s);
+        }
+    }
+
+    @Override
+    public void sortBySpendingService() {
+        Spending spending = new Spending();
+        List<Spending> spendingList = spendingRepository.sortBySpendingRepository(spending.getAmountSpent());
+        for (Spending s:spendingList) {
+            System.out.println(s);
+        }
     }
 }
