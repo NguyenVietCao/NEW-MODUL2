@@ -1,20 +1,23 @@
 package spending_management.controller;
 
+import spending_management.service.IdNotFoundException;
 import spending_management.service.SpendingService;
+import spending_management.service.UniqueIDException;
 
 import java.util.Scanner;
 
 public class SpendingController {
     Scanner scanner = new Scanner(System.in);
     SpendingService spendingService = new SpendingService();
-    public void displayMenu(){
+
+    public void displayMenu() {
         boolean check = true;
         do {
             System.out.printf("1. Spending Manager \n" +
                     "2. Exit \n" +
                     "Mời chọn chức năng: ");
             int n = Integer.parseInt(scanner.nextLine());
-            switch (n){
+            switch (n) {
                 case 1:
                     spendingManage();
                     break;
@@ -24,9 +27,10 @@ public class SpendingController {
                 default:
                     System.out.printf("Chức năng không tồn tại");
             }
-        }while (check);
+        } while (check);
     }
-    public void spendingManage(){
+
+    public void spendingManage() {
         boolean check = true;
         do {
             System.out.println("1. Display List Spending \n" +
@@ -40,7 +44,7 @@ public class SpendingController {
                     "9. Return Menu \n" +
                     "Mời chọn chức năng: ");
             int n = Integer.parseInt(scanner.nextLine());
-            switch (n){
+            switch (n) {
                 case 1:
                     spendingService.displaySpendingService();
                     break;
@@ -48,7 +52,12 @@ public class SpendingController {
                     spendingService.addSpendingService();
                     break;
                 case 3:
-                    spendingService.deleteSpendingService();
+                    try {
+                        spendingService.deleteSpendingService();
+
+                    } catch (IdNotFoundException e) {
+                        System.err.println(e);
+                    }
                     break;
                 case 4:
                     spendingService.editSpendingService();
@@ -71,6 +80,6 @@ public class SpendingController {
                 default:
                     System.out.println("Chức năng không tồn tại");
             }
-        }while (check);
+        } while (check);
     }
 }

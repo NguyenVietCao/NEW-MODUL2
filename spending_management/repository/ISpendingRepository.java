@@ -7,13 +7,16 @@ import java.util.Map;
 
 public interface ISpendingRepository {
     Map<String, Spending> displaySpendingRepository();
+    List<Spending> displaySpendByList();
     void addSpendingRepository(Spending spending);
     void deleteSpendingRepository(String spendingCodeDelete);
+    List<String> deleteSpendingData(String spendingCodeDelete);
     void editSpendingRepository(Spending spending);
     void searchBySpendingCodeRepository(String spendingCodeFind);
     List<Spending> searchBySpendingNameRepository(String spendingNameFind);
 
-    List<Spending> sortByNameRepository(String spendingName);
+    List<Spending> sortByNameRepository();
 
     List<Spending> sortBySpendingRepository(String amountSpent);
+    void saveToFile();
 }

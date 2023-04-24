@@ -71,6 +71,10 @@ public class Spending {
                 ", moreDescription='" + moreDescription + '\'' +
                 '}' + "\n";
     }
+
+    public String getInformationToCsv() {
+        return spendingCode + "," + spendingName + "," + spendingDate + "," + amountSpent + "," + moreDescription;
+    }
 }
 
 

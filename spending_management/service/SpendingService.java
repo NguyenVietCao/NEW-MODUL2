@@ -16,13 +16,22 @@ public class SpendingService implements ISpendingService {
         for (String key : set) {
             System.out.print(key + ":" + spendingMap.get(key));
         }
+//        List<Spending> spendings = spendingRepository.displaySpendByList();
+//        for (Spending s:spendings) {
+//            System.out.println(s);
+//        }
     }
 
     @Override
-    public void addSpendingService() {
+    public void addSpendingService()  {
+        Map<String, Spending> spendingMap = spendingRepository.displaySpendingRepository();
+        Set<String> set = spendingMap.keySet();
+        for (String key : set) {
+            System.out.print(key + ":" + spendingMap.get(key));
+        }
 //String spendingCode, String spendingName, String spendingDate, String amountSpent, String moreDescription
         System.out.println("Enter your Spending Code:");
-        String spendingCode = scanner.nextLine();
+        String spendingCodeService = scanner.nextLine();
 
         System.out.println("Enter your Spending Name:");
         String spendingName = scanner.nextLine();
@@ -36,8 +45,19 @@ public class SpendingService implements ISpendingService {
         System.out.println("Enter your More Description:");
         String moreDescription = scanner.nextLine();
 
-        Spending spending = new Spending(spendingCode, spendingName, spendingDate, amountSpent, moreDescription);
+        Spending spending = new Spending(spendingCodeService, spendingName, spendingDate, amountSpent, moreDescription);
+try {
+    if (spendingMap.get(spendingCodeService) != null){
+        System.err.println("Mã đã tồn tại");
+
+    }else {
         spendingRepository.addSpendingRepository(spending);
+
+    }
+} catch (Exception e) {
+    System.out.println("Ma da ton tai");;
+}
+
 
     }
 
@@ -76,19 +96,28 @@ public class SpendingService implements ISpendingService {
     }
 
     @Override
-    public void deleteSpendingService() {
-        System.out.println("Enter your Spending Code need to Delete:");
-        String spendingCodeDelete = scanner.nextLine();
+    public void deleteSpendingService() throws IdNotFoundException {
+
         Map<String, Spending> spendingMap = spendingRepository.displaySpendingRepository();
         Set<String> set = spendingMap.keySet();
+        for (String key : set) {
+            System.out.print(key + ":" + spendingMap.get(key));
+        }
+        System.out.println("Enter your Spending Code need to Delete:");
+        String spendingCodeDelete = scanner.nextLine();
         int count = 0;
         String[] arrset = new String[set.size()];
         for (String key : set) {
             arrset[count++] = key;
         }
         for (int i = 0; i < arrset.length; i++) {
+            if (spendingMap.get(spendingCodeDelete)==null){
+                throw new IdNotFoundException("Mã không tồn tại!");
+            }
+
             if (spendingCodeDelete.equals(spendingMap.get(arrset[i]).getSpendingCode())) {
-                spendingRepository.deleteSpendingRepository(spendingCodeDelete);
+                spendingRepository.deleteSpendingRepository(String.valueOf(spendingCodeDelete));
+//                spendingRepository.deleteSpendingData(spendingCodeDelete);
             }
 
         }
@@ -120,7 +149,7 @@ public class SpendingService implements ISpendingService {
     @Override
     public void sortByNameService() {
         Spending spending = new Spending();
-        List<Spending> spendingList = spendingRepository.sortByNameRepository(spending.getSpendingName());
+        List<Spending> spendingList = spendingRepository.sortByNameRepository();
         for (Spending s : spendingList) {
             System.out.println(s);
         }
